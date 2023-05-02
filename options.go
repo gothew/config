@@ -1,5 +1,8 @@
 package config
 
+// ConfigService returns the default credentials for the application.
+type ConfigServiceOptions = func() ConfigOptions
+
 type Config struct {
 	AppDir         string
 	ConfigFileName string
@@ -21,7 +24,8 @@ type configError struct {
 
 // ConfigParser is the parser for the config file.
 type ConfigParser struct {
-	config Config
+	config               Config
+	configServiceOptions ConfigServiceOptions
 }
 
 type ConfigOptions struct {

@@ -15,7 +15,7 @@ func New() *ConfigParser {
 
 func NewWithOptions() *ConfigParser {
 	c := &ConfigParser{
-		Config{
+		config: Config{
 			ConfigFileName: ConfigFileNameDefault,
 		},
 	}
@@ -28,6 +28,13 @@ func NewWithOptions() *ConfigParser {
 		slice := strings.Split(pwd, string(filepath.Separator))
 		c.config.AppDir = slice[len(slice)-1]
 	}
+
+	if c.configServiceOptions == nil {
+		c.configServiceOptions = func() ConfigOptions {
+			return ConfigOptions{}
+		}
+	}
+
 	return c
 }
 

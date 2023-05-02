@@ -11,13 +11,13 @@ import (
 )
 
 // getDefaultConfig returns the default credentials for the application.
-func (parser ConfigParser) getDefaultConfig() ConfigOptions {
-	return ConfigOptions{}
-}
+//func (parser ConfigParser) getDefaultConfig() ConfigOptions {
+//return ConfigOptions{}
+//}
 
 // getDefaultConfigYamlContents returns the default config credentials.
 func (parser ConfigParser) getDefaultConfigYamlContents() string {
-	defaultConfig := parser.getDefaultConfig()
+	defaultConfig := parser.configServiceOptions()
 	yaml, _ := yaml.Marshal(defaultConfig)
 
 	return string(yaml)
@@ -103,7 +103,7 @@ func (e parsingError) Error() string {
 
 // readConfigFile reads the config file and return config
 func (parser *ConfigParser) readConfigFile(path string) (ConfigOptions, error) {
-	config := parser.getDefaultConfig()
+	config := parser.configServiceOptions()
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return config, configError{parser: parser, configDir: path, err: err}
@@ -145,4 +145,8 @@ func (configParser *ConfigParser) SetConfigFileName(configFileName string) {
 // SetAppDir sets the dir config.
 func (configParser *ConfigParser) SetAppDir(appDir string) {
 	configParser.config.AppDir = appDir
+}
+
+func (configParser *ConfigParser) SetConfigOptions(configServiceOptions ConfigServiceOptions) {
+	configParser.configServiceOptions = configServiceOptions
 }
