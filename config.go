@@ -141,3 +141,7 @@ func (configParser ConfigParser) GetConfigDir() string {
 func (configParser *ConfigParser) SetConfigFileName(configFileName string) {
 	configParser.config.ConfigFileName = configFileName
 }
+
+func (configParser *ConfigParser) SetAppDir(appDir string) {
+	configParser.config.AppDir = appDir
+}
