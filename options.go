@@ -28,6 +28,7 @@ type ConfigParser struct {
 	configServiceOptions ConfigServiceOptions
 }
 
+// ConfigOptions is the config options for file config.
 type ConfigOptions struct {
 	Services map[string]SettingsConfig `yaml:"services"`
 }
