@@ -10,11 +10,6 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// getDefaultConfig returns the default credentials for the application.
-//func (parser ConfigParser) getDefaultConfig() ConfigOptions {
-//return ConfigOptions{}
-//}
-
 // getDefaultConfigYamlContents returns the default config credentials.
 func (parser ConfigParser) getDefaultConfigYamlContents() string {
 	defaultConfig := parser.configServiceOptions()
@@ -147,6 +142,7 @@ func (configParser *ConfigParser) SetAppDir(appDir string) {
 	configParser.config.AppDir = appDir
 }
 
+// SetConfigOptions sets fn for config interface yaml.
 func (configParser *ConfigParser) SetConfigOptions(configServiceOptions ConfigServiceOptions) {
 	configParser.configServiceOptions = configServiceOptions
 }

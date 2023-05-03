@@ -7,13 +7,17 @@ import (
 	"strings"
 )
 
-var defaultConfig = NewWithOptions()
+var defaultConfig = NewWithOptions(ConfigParser{
+	config: Config{
+		ConfigFileName: ConfigFileNameDefault,
+	},
+})
 
 func New() *ConfigParser {
-	return NewWithOptions()
+	return NewWithOptions(ConfigParser{})
 }
 
-func NewWithOptions() *ConfigParser {
+func NewWithOptions(config ConfigParser) *ConfigParser {
 	c := &ConfigParser{
 		config: Config{
 			ConfigFileName: ConfigFileNameDefault,
@@ -42,6 +46,14 @@ func SetConfigFileName(configFileName string) {
 	defaultConfig.SetConfigFileName(configFileName)
 }
 
-func ParseConfig() {
-	defaultConfig.ParserConfig()
+func SetAppDir(appDir string) {
+	defaultConfig.SetAppDir(appDir)
+}
+
+func SetConfigOptions(configServiceOptions ConfigServiceOptions) {
+	defaultConfig.SetConfigOptions(configServiceOptions)
+}
+
+func ParseConfig() (ConfigOptions, error) {
+	return defaultConfig.ParserConfig()
 }

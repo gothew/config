@@ -8,12 +8,8 @@ type Config struct {
 	ConfigFileName string
 }
 
-// SettingsConfig struct represents the config for the credentials.
-type SettingsConfig struct {
-	Prefix string `yaml:"prefix"`
-	Querys string `yaml:"querys"`
-	Path   string `yaml:"path"`
-}
+// Services represents the config for the credentials.
+type Services map[string]interface{}
 
 type configError struct {
 	configDir string
@@ -30,5 +26,5 @@ type ConfigParser struct {
 
 // ConfigOptions is the config options for file config.
 type ConfigOptions struct {
-	Services map[string]SettingsConfig `yaml:"services"`
+	Services `yaml:"services"`
 }
