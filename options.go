@@ -1,7 +1,7 @@
 package config
 
 // ConfigService returns the default credentials for the application.
-type ConfigServiceOptions = func() ConfigOptions
+type ConfigServiceOptions func() ConfigOptions
 
 type Config struct {
 	AppDir         string
