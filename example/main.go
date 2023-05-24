@@ -28,5 +28,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("s1: %s", cfg.Services.ftp)
+	fmt.Printf("s1: %s", cfg.Services["ftp"])
 }
