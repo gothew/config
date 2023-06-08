@@ -26,5 +26,5 @@ type ConfigParser struct {
 
 // ConfigOptions is the config options for file config.
 type ConfigOptions struct {
-	Services `yaml:"services"`
+	Services interface{}
 }
